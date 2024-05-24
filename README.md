@@ -28,4 +28,4 @@ npm run start
 ```
 
 ## Demo preview
-Project Link: [Color dropper](https://github.com/artakpoghosyan1/color_dropper)
+Project Link: [Color dropper](https://artakpoghosyan1.github.io/color_dropper)
