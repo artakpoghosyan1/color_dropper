@@ -2,6 +2,7 @@ import image from './image.jpg';
 
 export function draw(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
     const img = new Image();
+    const canvasWrapper = document.getElementById('canvasWrapper') as HTMLDivElement;
 
     function getImageSize(): {width: number, height: number} {
         const imgRatio = img.width / img.height;
@@ -30,8 +31,8 @@ export function draw(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
     }
 
     function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = canvasWrapper.offsetWidth;
+        canvas.height = canvasWrapper.offsetHeight;
         drawImage();
     }
 
