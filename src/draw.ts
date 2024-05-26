@@ -3,6 +3,7 @@ import image from './image.jpg';
 export function draw(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
     const img = new Image();
     const canvasWrapper = document.getElementById('canvasWrapper') as HTMLDivElement;
+    toggleLoader(canvasWrapper, true)
 
     function getImageSize(): {width: number, height: number} {
         const imgRatio = img.width / img.height;
@@ -38,9 +39,22 @@ export function draw(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
 
     img.onload = function() {
         resizeCanvas()
+        toggleLoader(canvasWrapper, false)
     };
 
     img.src = image;
 
     window.addEventListener('resize', resizeCanvas);
+}
+
+function toggleLoader(parentElement: HTMLDivElement, isLoading: boolean) {
+    if(isLoading) {
+        const p = document.createElement('p')
+        p.textContent = 'Loading...'
+        p.id = 'loader'
+        parentElement.appendChild(p)
+    } else {
+        const loader = document.getElementById('loader') as HTMLParagraphElement
+        parentElement.removeChild(loader)
+    }
 }
